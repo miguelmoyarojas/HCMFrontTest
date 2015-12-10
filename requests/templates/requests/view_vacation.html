@@ -1,0 +1,9 @@
+<a href="/requests/" class="btn btn-primary">Volver</a>
+<h1>Solicitud de vacaciones</h1>
+
+{% if data.start_date %}<p>Fecha inicio: {{ data.start_date }}</p>{% endif %}
+{% if data.end_date %}<p>Fecha fin: {{ data.end_date }}</p>{% endif %}
+{% if data.motive %}<p>Motivo: {{ data.motive }}</p>{% endif %}
+{% if data.request_date %}<p>Fecha solicitud: {{ data.request_date }}</p>{% endif %}
+{% if data.requested_by %}<p>Pedido por: {{ data.requested_by }}</p>{% endif %}
+{% if data.assigned_to %}<p>Asignado a: {{ data.assigned_to }}</p>{% endif %}

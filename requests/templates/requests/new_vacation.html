@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .form-group {
+        clear: both;
+    }
+</style>
+
+<a class="btn btn-primary" href="/requests/">Volver</a>
+
+<form action="/requests/new_vacation/" method="post">
+    {% csrf_token %}
+
+    <fieldset>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="{{ form.start_date.id_for_label }}">Fecha de inicio:</label>
+            <div class="col-sm-8">
+                {{ form.start_date }}
+                {{ form.start_date.errors }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="{{ form.end_date.id_for_label }}">Fecha de fin:</label>
+            <div class="col-sm-8">
+                {{ form.end_date }}
+                {{ form.end_date.errors }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="{{ form.motive.id_for_label }}">Motivo:</label>
+            <div class="col-sm-8">
+                {{ form.motive }}
+                {{ form.motive.errors }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="{{ form.request_date.id_for_label }}">Fecha de solicitud:</label>
+            <div class="col-sm-8">
+                {{ form.request_date }}
+                {{ form.request_date.errors }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="{{ form.requested_by.id_for_label }}">Solicitado por:</label>
+            <div class="col-sm-8">
+                {{ form.requested_by }}
+                {{ form.requested_by.errors }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="{{ form.assigned_to.id_for_label }}">Asignado a:</label>
+            <div class="col-sm-8">
+                {{ form.assigned_to }}
+                {{ form.assigned_to.errors }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-4">
+                <input type="submit" value="Enviar" class="btn btn-success">
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+<script>
+$(document).ready(function(){
+    $("#id_start_date").datepicker({
+        dateFormat: 'yy-mm-dd'
+    });
+
+    $("#id_end_date").datepicker({
+        dateFormat: 'yy-mm-dd'
+    });
+
+    $("#id_request_date").datepicker({
+        dateFormat: 'yy-mm-dd'
+    });
+});
+</script>
+
+
+{% endblock content %}

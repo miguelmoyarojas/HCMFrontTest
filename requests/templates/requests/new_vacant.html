@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .form-group {
+        clear: both;
+    }
+</style>
+
+<a class="btn btn-primary" href="/requests/">Volver</a>
+
+<form action="/requests/new_vacant/" method="post">
+    {% csrf_token %}
+
+    <fieldset>
+        <div class="form-group">
+            {{ form.requested_position.errors }}
+            <label class="col-md-4 control-label" for="{{ form.requested_position.id_for_label }}">Posición solicitada:</label>
+            <div class="col-sm-8">
+                {{ form.requested_position }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.vacants_amount.errors }}
+            <label class="col-md-4 control-label" for="{{ form.vacants_amount.id_for_label }}">Cantidad de vacantes:</label>
+            <div class="col-sm-8">
+                {{ form.vacants_amount }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.position_type.errors }}
+            <label class="col-md-4 control-label" for="{{ form.position_type.id_for_label }}">Tipo de empleo:</label>
+            <div class="col-sm-8">
+                {{ form.position_type }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.working_day_type.errors }}
+            <label class="col-md-4 control-label" for="{{ form.working_day_type.id_for_label }}">Tipo de jornada:</label>
+            <div class="col-sm-8">
+                {{ form.working_day_type }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.salary.errors }}
+            <label class="col-md-4 control-label" for="{{ form.salary.id_for_label }}">Sueldo:</label>
+            <div class="col-sm-8">
+                {{ form.salary }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.comments.errors }}
+            <label class="col-md-4 control-label" for="{{ form.comments.id_for_label }}">Comentarios:</label>
+            <div class="col-sm-8">
+                {{ form.comments }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.request_date.errors }}
+            <label class="col-md-4 control-label" for="{{ form.request_date.id_for_label }}">Fecha de solicitud:</label>
+            <div class="col-sm-8">
+                {{ form.request_date }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.requested_by.errors }}
+            <label class="col-md-4 control-label" for="{{ form.requested_by.id_for_label }}">Solicitado por:</label>
+            <div class="col-sm-8">
+                {{ form.requested_by }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-4">
+                <input type="submit" value="Enviar" class="btn btn-success">
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+<script>
+$(document).ready(function(){
+    $("#id_request_date").datepicker({
+        dateFormat: 'yy-mm-dd'
+    });
+});
+</script>
+
+{% endblock content %}

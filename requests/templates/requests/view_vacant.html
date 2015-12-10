@@ -1,0 +1,12 @@
+<a href="/requests/" class="btn btn-primary">Volver</a>
+<h1>{{ data.requested_position }}</h1>
+
+{% if data.vacants_amount > 0 %}<p>Quedan {{ data.vacants_amount }} vacantes</p>{% endif %}
+{% if data.position_type %}<p>Empleo {{ data.position_type }}</p>{% endif %}
+{% if data.working_day_type %}<p>Jornada {{ data.working_day_type }}</p>{% endif %}
+{% if data.salary %}<p>$ {{ data.salary }} de sueldo</p>{% endif %}
+{% if data.comments %}<p>{{ data.comments }}</p>{% endif %}
+{% if data.request_date %}<p>Fecha solicitud: {{ data.request_date }}</p>{% endif %}
+{% if data.requested_by %}<p>Pedido por: {{ data.requested_by }}</p>{% endif %}
+{% if data.assigned_to %}<p>Asignado a: {{ data.assigned_to }}</p>{% endif %}
+{% if data.approved %}<p>¿Aprobado?: {{ data.approved }}</p>{% endif %}

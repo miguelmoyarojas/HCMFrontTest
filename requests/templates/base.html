@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap-3.3.6-dist/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'dataTables/jquery.dataTables.min.js' %}" />
+
+<style>
+    .list-menu li {
+        float: left;
+        list-style: none;
+        margin-right: 20px;
+    }
+    .upper-row p { float: right; }
+
+    .sidebar-nav {
+        padding: 9px 0;
+    }
+
+    #messages {
+        position: fixed;
+        top: 0;
+        text-align: center;
+    }
+
+    .alert {
+        padding: 15px 15px 35px;
+    }
+
+    @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+            float: none;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+</style>
+
+<html>
+    <head>
+        <title>HCMFront Test</title>
+    </head>
+
+    <body>
+
+    <script src="{% static 'jquery/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'jquery-ui-1.11.4.custom/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'bootstrap-3.3.6-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'dataTables/jquery.dataTables.min.js' %}"></script>
+
+    <div id="messages">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    <button type="button" class="close" data-dismiss="alert"&gt;&amp;times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="upper-row"><p>¡Bienvenido, {{ user }}! <a href="/requests/logout/">Salir</a></p></div>
+    <div class="clearfix"></div>
+
+    <div class="container">
+        {% block content %}{% endblock content %}
+    </div>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .form-group {
+        clear: both;
+    }
+</style>
+
+<a class="btn btn-primary" href="/requests/">Volver</a>
+
+<form action="/requests/approve_vacant/{{ request_id }}/" method="post">
+	{% csrf_token %}
+	<fieldset>
+		<div class="fieldWrapper">
+			{{ form.approved.errors }}
+			<label class="col-md-4 control-label" for="{{ form.approved.id_for_label }}">Aprobar:</label>
+            <div class="col-sm-8">
+				{{ form.approved }}
+			</div>
+		</div>
+		<div class="fieldWrapper">
+			{{ form.assigned_to.errors }}
+			<label class="col-md-4 control-label" for="{{ form.assigned_to.id_for_label }}">Asignado a:</label>
+            <div class="col-sm-8">
+				{{ form.assigned_to }}
+			</div>
+		</div>
+		<div class="fieldWrapper">
+            <div class="col-sm-8 col-sm-offset-4">
+                <input type="submit" value="Enviar" class="btn btn-success">
+            </div>
+		</div>
+	</fieldset>
+</form>
+{% endblock content %}
